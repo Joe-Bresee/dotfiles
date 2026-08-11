@@ -17,6 +17,9 @@
                 pkgs.lazygit
                 pkgs.stow
                 pkgs.eza
+                pkgs.tmux
+                pkgs.starship
+                pkgs.nerd-fonts.jetbrains-mono
             ];
 
             programs.zsh.enable = true;
