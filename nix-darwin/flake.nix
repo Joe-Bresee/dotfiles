@@ -1,0 +1,57 @@
+{
+    description = "Joe's Darwin system flake";
+
+    inputs = {
+        nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+        nix-darwin.url = "github:LnL7/nix-darwin";
+        nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    outputs = inputs@{ self, nixpkgs, nix-darwin, ... }:
+    let
+        configuration = { pkgs, ... }: {
+            environment.systemPackages = [
+                pkgs.git
+                pkgs.yt-dlp
+                pkgs.btop
+                pkgs.lazygit
+                pkgs.stow
+            ];
+
+            programs.zsh.enable = true;
+            security.pam.services.sudo_local.touchIdAuth = true;
+
+            nix.enable = false;
+            system.stateVersion = 5;
+            system.primaryUser = "jkbresee";
+            nixpkgs.hostPlatform = "aarch64-darwin";
+            system.configurationRevision = self.rev or self.dirtyRev or null;
+
+            homebrew = {
+                enable = true;
+                onActivation.autoUpdate = true;
+                onActivation.cleanup = "zap";
+                casks = [
+                    "visual-studio-code"
+                    "brave-browser@nightly"
+                    "obsidian"
+                    "nikitabobko/tap/aerospace"
+                    "ghostty"
+                    "raycast"
+                    "jordanbaird-ice"
+                    "aldente"
+                    "orbstack"
+                    "github"
+                    "calibre"
+                    "discord"
+                ];
+            };
+        };
+    in
+    {
+        darwinConfigurations."Joes-MacBook-Pro" = nix-darwin.lib.darwinSystem {
+            system = "aarch64-darwin";
+            modules = [ configuration ];
+        };
+    };
+}
