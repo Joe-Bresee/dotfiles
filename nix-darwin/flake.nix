@@ -16,6 +16,7 @@
                 pkgs.btop
                 pkgs.lazygit
                 pkgs.stow
+                pkgs.eza
             ];
 
             programs.zsh.enable = true;
