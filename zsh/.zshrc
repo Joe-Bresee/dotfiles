@@ -23,10 +23,11 @@ alias shsrc="source ~/.zshrc"
 alias .. "cd .."
 alias ~ "cd ~"
 
-# ls
-alias ll="ls -lah"
-alias la="ls -A"
-alias l="ls -CF"
+# ls (eza)
+alias ls="eza"
+alias ll="eza -lah --icons"
+alias la="eza -a --icons"
+alias lt="eza --tree --icons"
 
 # QOL
 alias c="clear"
