@@ -1,3 +1,7 @@
+add_newline = false
+
+################
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 [aws]
@@ -83,7 +87,7 @@ symbol = "󱇶 "
 symbol = " "
 
 [git_branch]
-symbol = " "
+symbol = "🌱"
 
 [git_commit]
 tag_symbol = '  '

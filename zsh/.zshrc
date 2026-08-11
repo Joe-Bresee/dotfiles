@@ -37,7 +37,7 @@ alias ports="lsof -i -P -n | grep LISTEN"
 # git
 alias s="git status"
 alias a="git add"
-alias cm="commit -m"
+alias cm="git commit -m"
 alias p="git push"
 
 
