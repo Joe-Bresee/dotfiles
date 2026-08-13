@@ -20,6 +20,8 @@
                 pkgs.tmux
                 pkgs.starship
                 pkgs.nerd-fonts.jetbrains-mono
+                pkgs.fzf
+                pkgs.zoxide
             ];
 
             programs.zsh.enable = true;

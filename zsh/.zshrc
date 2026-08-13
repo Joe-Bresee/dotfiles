@@ -20,8 +20,8 @@ alias zshrc="code ~/dotfiles/zsh/.zshrc"
 alias shsrc="source ~/.zshrc"
 
 # nav
-alias .. "cd .."
-alias ~ "cd ~"
+alias ..="cd .."
+alias ~="cd ~"
 
 # ls (eza)
 alias ls="eza"
@@ -32,8 +32,11 @@ alias lt="eza --tree --icons"
 # QOL
 alias c="clear"
 alias h="history"
-alias path="echo -e ${PATH//:/\\n}'"
+alias path="echo -e ${PATH//:/\\n}"
 alias ports="lsof -i -P -n | grep LISTEN"
+
+# zoxide
+alias z="zoxide"
 
 # git
 alias s="git status"
@@ -41,6 +44,11 @@ alias a="git add"
 alias cm="git commit -m"
 alias p="git push"
 
+# fzf
+source <(fzf --zsh)
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # starship
 eval "$(starship init zsh)"
