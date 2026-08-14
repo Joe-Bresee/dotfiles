@@ -1,6 +1,19 @@
-add_newline = false
-
 "$schema" = 'https://starship.rs/config-schema.json'
+
+
+# format = "..."
+
+# transient left and right prompts
+[profiles]
+transient="""
+$character\
+"""
+
+rtransient="""
+$status\
+$cmd_duration\
+$time\
+"""
 
 [aws]
 symbol = " "
@@ -85,7 +98,7 @@ symbol = "󱇶 "
 symbol = " "
 
 [git_branch]
-symbol = "🌱"
+symbol = " "
 
 [git_commit]
 tag_symbol = '  '

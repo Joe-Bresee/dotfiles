@@ -22,6 +22,7 @@
                 pkgs.nerd-fonts.jetbrains-mono
                 pkgs.fzf
                 pkgs.zoxide
+                pkgs.vscode
             ];
 
             programs.zsh.enable = true;
@@ -38,7 +39,6 @@
                 onActivation.autoUpdate = true;
                 onActivation.cleanup = "zap";
                 casks = [
-                    "visual-studio-code"
                     "brave-browser@nightly"
                     "obsidian"
                     "nikitabobko/tap/aerospace"
