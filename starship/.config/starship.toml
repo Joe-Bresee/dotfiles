@@ -1,20 +1,36 @@
+# yaml-language-server: $schema=https://starship.rs/config-schema.json
+
+# get autocompletions based on config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-
-# format = "..."
+format = """$directory$character$git_branch$git_state$git_status$cmd_duration"""
 
 # transient left and right prompts
 [profiles]
-transient="""
+transient = """
 $character\
 """
 
-rtransient="""
+rtransient = """
 $status\
 $cmd_duration\
 $time\
 """
 
+# modules
+[directory]
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_status]
+
+
+# global settings
+command_timeout = 100
+add_newline = true
+
+
+# nerds
 [aws]
 symbol = " "
 
@@ -63,9 +79,6 @@ symbol = " "
 
 [direnv]
 symbol = " "
-
-[directory]
-read_only = " 󰌾"
 
 [docker_context]
 symbol = " "
