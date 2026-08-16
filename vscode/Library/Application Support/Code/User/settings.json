@@ -1,0 +1,9 @@
+{
+    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.enable": {
+        "nix": false
+    },
+
+  "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontFamily": "JetBrainsMono Nerd Font"
+}
