@@ -12,6 +12,7 @@
         configuration = { pkgs, ... }: {
 
             nixpkgs.config.allowUnfree = true;
+            fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
                 pkgs.git
@@ -22,7 +23,6 @@
                 pkgs.eza
                 pkgs.tmux
                 pkgs.starship
-                pkgs.nerd-fonts.jetbrains-mono
                 pkgs.fzf
                 pkgs.zoxide
                 pkgs.vscode
@@ -42,7 +42,7 @@
                 onActivation.autoUpdate = true;
                 onActivation.cleanup = "zap";
                 casks = [
-                    "brave-browser@nightly"
+                    "brave-browser"
                     "obsidian"
                     "nikitabobko/tap/aerospace"
                     "ghostty"

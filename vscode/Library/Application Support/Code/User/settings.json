@@ -1,9 +1,15 @@
 {
-    "github.copilot.nextEditSuggestions.enabled": false,
+    "github.copilot.nextEditSuggestions.enabled": true,
     "github.copilot.enable": {
-        "nix": false
+        "nix": true
     },
 
   "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font",
-  "editor.fontFamily": "JetBrainsMono Nerd Font"
+  "editor.fontFamily": "JetBrainsMono Nerd Font",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 13,
+
+    "workbench.colorTheme": "Solarized Dark",
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.enableImages": true,
 }
