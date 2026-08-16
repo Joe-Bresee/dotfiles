@@ -10,6 +10,9 @@
     outputs = inputs@{ self, nixpkgs, nix-darwin, ... }:
     let
         configuration = { pkgs, ... }: {
+
+            nixpkgs.config.allowUnfree = true;
+
             environment.systemPackages = [
                 pkgs.git
                 pkgs.yt-dlp
