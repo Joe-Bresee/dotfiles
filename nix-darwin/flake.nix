@@ -40,6 +40,8 @@
                 pkgs.isync
                 pkgs.msmtp
                 pkgs.pass
+                pkgs.w3m
+                pkgs.chafa
             ];
 
             programs.zsh.enable = true;

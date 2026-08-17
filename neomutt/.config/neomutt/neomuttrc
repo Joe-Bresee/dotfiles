@@ -19,3 +19,10 @@ set sidebar_width = 25
 bind index,pager \Cp sidebar-prev
 bind index,pager \Cn sidebar-next
 bind index,pager \Co sidebar-open
+
+# image rendering
+auto_view text/html
+auto_view image/png image/jpeg image/gif image/webp
+alternative_order text/plain text/html
+
+set mailcap_path = ~/.mailcap
