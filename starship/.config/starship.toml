@@ -574,7 +574,7 @@ disabled = false
 [custom.git_status_general]
 command = "if git diff --quiet && git diff --cached --quiet && test -z \"$(git ls-files --others --exclude-standard)\"; then exit 0; else printf ''; fi"
 when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-format = "[$output ]($style)"
+format = "[$output]($style)"
 style = "bg:bg_primary fg:fg_tertiary bold"
 disabled = false
 
