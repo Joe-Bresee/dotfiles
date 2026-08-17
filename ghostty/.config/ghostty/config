@@ -1,1 +1,12 @@
 font-family = "JetBrainsMono Nerd Font"
+
+# catppuccin-mocha
+background = #1e1e2e
+foreground = #cdd6f4
+
+# background-image=
+
+background-opacity = 0.5
+
+curson-opacity = 0.75
+cursor-style = block_hollow
