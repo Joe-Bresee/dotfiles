@@ -49,7 +49,7 @@ alias la="eza -a --icons"
 alias lt="eza --tree --icons"
 
 # QOL
-alias c="clear"
+alias cl="clear"
 alias h="history"
 alias path="echo -e ${PATH//:/\\n}"
 alias ports="lsof -i -P -n | grep LISTEN"
@@ -58,7 +58,7 @@ alias vsx-save="code --list-extensions > ~/dotfiles/vscode/extensions.txt"
 # git
 alias s="git status"
 alias a="git add"
-alias cm="git commit -m"
+alias c="git commit -m"
 alias p="git push"
 
 # fzf
