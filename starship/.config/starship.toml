@@ -103,19 +103,19 @@ format = "[$symbol$percentage ]($style)"
 
 [[battery.display]]
 threshold = 10
-style = "bg:right_bg_primary fg:right_fg_primary dimmed"
+style = "bg:right_bg_primary fg:red dimmed"
 
 [[battery.display]]
 threshold = 30
-style = "bg:right_bg_primary fg:right_fg_primary dimmed"
+style = "bg:right_bg_primary fg:peach dimmed"
 
 [[battery.display]]
 threshold = 50
-style = "bg:right_bg_primary fg:right_fg_primary dimmed"
+style = "bg:right_bg_primary fg:yellow dimmed"
 
 [[battery.display]]
 threshold = 100
-style = "bg:right_bg_primary fg:right_fg_primary dimmed"
+style = "bg:right_bg_primary fg:green dimmed"
 
 [buf]
 format = "with [$symbol($version )]($style)"
