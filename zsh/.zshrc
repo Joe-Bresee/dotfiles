@@ -10,6 +10,11 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
+
+# ensure up/down history behaves nice
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
 # Command-line text styling
 typeset -gA ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[default]='fg=#6c7086,dim'
@@ -98,3 +103,5 @@ function transient-prompt() {
     # Use saved transient prompt; leave RPROMPT untouched (regular right prompt persists)
     PROMPT="$SAVED_PROMPT" zle .reset-prompt
 }
+
+export PATH="$HOME/.local/bin:$PATH"
