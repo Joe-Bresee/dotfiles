@@ -26,6 +26,7 @@
                 pkgs.fzf
                 pkgs.zoxide
                 pkgs.vscode
+                pkgs.fastfetch
             ];
 
             programs.zsh.enable = true;

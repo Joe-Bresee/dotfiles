@@ -1,20 +1,20 @@
-# formats
-format = "$username$hostname$sudo$directory$git_branch$git_state$git_status$golang$python$aws$kubernetes$helm$terraform$character"
-right_format = "$status$cmd_duration$battery$memory_usage"
+# Warning: This config does not include keys that have an unset value
 
-# Transient left and right prompt profiles
-[profiles]
-transient = "$character"
-# rtransient = "$status$cmd_duration$time" --add when right transient prompt is supported
-
-# global
+# $all is shorthand for $username$hostname$localip$shlvl$singularity$kubernetes$nats$directory$vcsh$fossil_branch$fossil_metrics$git_branch$git_commit$git_state$git_metrics$git_status$hg_branch$hg_state$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs$ocaml$odin$opa$perl$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$memory_usage$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$custom$sudo$cmd_duration$line_break$jobs$battery$time$status$container$netns$os$shell$character
+"$schema" = "https://starship.rs/config-schema.json"
+format = "$directory$character$git_branch$git_state$git_status$cmd_duration"
+right_format = ""
 continuation_prompt = "[∙](bright-black) "
-scan_timeout = "30"
-command_timeout = "500"
-add_newline = "false"
-follow_symlinks = "true"
+scan_timeout = 30
+command_timeout = 500
+add_newline = true
+follow_symlinks = true
 
 [palettes]
+
+[profiles]
+transient = "$character"
+rtransient = "$status$cmd_duration$time"
 
 [aws]
 format = 'on [$symbol($profile )(\($region\) )(\[$duration\] )]($style)'
@@ -49,18 +49,6 @@ format = "[$symbol$percentage]($style) "
 threshold = 10
 style = "red bold"
 
-[[battery.display]]
-threshold = 30
-style = "bold yellow"
-
-[[battery.display]]
-threshold = 50
-style = "grey dimmed"
-
-[[battery.display]]
-threshold = 100
-style = "bold green"
-
 [buf]
 format = "with [$symbol($version )]($style)"
 version_format = "v${raw}"
@@ -68,7 +56,11 @@ symbol = " "
 style = "bold blue"
 disabled = false
 detect_extensions = []
-detect_files = ["buf.yaml", "buf.gen.yaml", "buf.work.yaml"]
+detect_files = [
+    "buf.yaml",
+    "buf.gen.yaml",
+    "buf.work.yaml",
+]
 detect_folders = []
 
 [bun]
@@ -78,7 +70,11 @@ symbol = " "
 style = "bold red"
 disabled = false
 detect_extensions = []
-detect_files = ["bun.lock", "bun.lockb", "bunfig.toml"]
+detect_files = [
+    "bun.lock",
+    "bun.lockb",
+    "bunfig.toml",
+]
 detect_folders = []
 
 [c]
@@ -87,10 +83,26 @@ version_format = "v${raw}"
 style = "149 bold"
 symbol = " "
 disabled = false
-detect_extensions = ["c", "h"]
+detect_extensions = [
+    "c",
+    "h",
+]
 detect_files = []
 detect_folders = []
-commands = [["cc", "--version"], ["gcc", "--version"], ["clang", "--version"]]
+commands = [
+    [
+    "cc",
+    "--version",
+],
+    [
+    "gcc",
+    "--version",
+],
+    [
+    "clang",
+    "--version",
+],
+]
 
 [character]
 format = "$symbol "
@@ -166,14 +178,17 @@ symbol = " "
 style = "bold blue"
 disabled = false
 detect_extensions = []
-detect_files = ["CMakeLists.txt", "CMakeCache.txt"]
+detect_files = [
+    "CMakeLists.txt",
+    "CMakeCache.txt",
+]
 detect_folders = []
 
 [cmd_duration]
-min_time = 500
+min_time = 2000
 format = "took [$duration]($style) "
 style = "yellow bold"
-show_milliseconds = true
+show_milliseconds = false
 disabled = false
 show_notifications = false
 min_time_to_notify = 45000
@@ -184,7 +199,12 @@ version_format = "v${raw}"
 symbol = " "
 style = "bold blue"
 disabled = false
-detect_extensions = ["cbl", "cob", "CBL", "COB"]
+detect_extensions = [
+    "cbl",
+    "cob",
+    "CBL",
+    "COB",
+]
 detect_files = []
 detect_folders = []
 
@@ -224,17 +244,17 @@ detect_files = []
 detect_folders = []
 commands = [
     [
-        "c++",
-        "--version",
-    ],
+    "c++",
+    "--version",
+],
     [
-        "g++",
-        "--version",
-    ],
+    "g++",
+    "--version",
+],
     [
-        "clang++",
-        "--version",
-    ],
+    "clang++",
+    "--version",
+],
 ]
 
 [crystal]
@@ -264,7 +284,11 @@ symbol = " "
 style = "bold blue"
 disabled = false
 detect_extensions = ["dart"]
-detect_files = ["pubspec.yaml", "pubspec.yml", "pubspec.lock"]
+detect_files = [
+    "pubspec.yaml",
+    "pubspec.yml",
+    "pubspec.lock",
+]
 detect_folders = [".dart_tool"]
 
 [deno]
@@ -293,7 +317,7 @@ fish_style_pwd_dir_length = 0
 use_logical_path = true
 format = "[$path]($style)[$read_only]($read_only_style) "
 repo_root_format = "[$before_root_path]($before_repo_root_style)[$repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) "
-style = "bg:blue fg:black bold"
+style = "cyan bold"
 disabled = false
 read_only = "🔒"
 read_only_style = "red"
@@ -339,7 +363,11 @@ symbol = " "
 style = "blue bold"
 heuristic = true
 disabled = false
-detect_extensions = ["csproj", "fsproj", "xproj"]
+detect_extensions = [
+    "csproj",
+    "fsproj",
+    "xproj",
+]
 detect_files = [
     "global.json",
     "project.json",
@@ -366,7 +394,11 @@ symbol = " "
 style = "cyan bold"
 disabled = false
 detect_extensions = ["elm"]
-detect_files = ["elm.json", "elm-package.json", ".elm-version"]
+detect_files = [
+    "elm.json",
+    "elm-package.json",
+    ".elm-version",
+]
 detect_folders = ["elm-stuff"]
 
 [env_var]
@@ -378,7 +410,10 @@ symbol = " "
 style = "bold red"
 disabled = false
 detect_extensions = []
-detect_files = ["rebar.config", "erlang.mk"]
+detect_files = [
+    "rebar.config",
+    "erlang.mk",
+]
 detect_folders = []
 
 [fennel]
@@ -426,17 +461,17 @@ detect_files = ["fpm.toml"]
 detect_folders = []
 commands = [
     [
-        "gfortran",
-        "--version",
-    ],
+    "gfortran",
+    "--version",
+],
     [
-        "flang",
-        "--version",
-    ],
+    "flang",
+    "--version",
+],
     [
-        "flang-new",
-        "--version",
-    ],
+    "flang-new",
+    "--version",
+],
 ]
 
 [fossil_branch]
@@ -466,9 +501,9 @@ detect_env_vars = []
 [gcloud.project_aliases]
 
 [git_branch]
-format = "[$symbol$branch(:$remote_branch)]($style) "
+format = "on [$symbol$branch(:$remote_branch)]($style) "
 symbol = " "
-style = "bg:green fg:black bold"
+style = "bold purple"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 only_attached = false
@@ -570,7 +605,10 @@ symbol = " "
 style = "bold bright-cyan"
 disabled = false
 recursive = false
-detect_extensions = ["gradle", "gradle.kts"]
+detect_extensions = [
+    "gradle",
+    "gradle.kts",
+]
 detect_files = []
 detect_folders = ["gradle"]
 
@@ -586,8 +624,15 @@ version_format = "v${raw}"
 symbol = " "
 style = "bold purple"
 disabled = false
-detect_extensions = ["hs", "cabal", "hs-boot"]
-detect_files = ["stack.yaml", "cabal.project"]
+detect_extensions = [
+    "hs",
+    "cabal",
+    "hs-boot",
+]
+detect_files = [
+    "stack.yaml",
+    "cabal.project",
+]
 detect_folders = []
 
 [haxe]
@@ -596,9 +641,19 @@ version_format = "v${raw}"
 symbol = " "
 style = "bold fg:202"
 disabled = false
-detect_extensions = ["hx", "hxml"]
-detect_files = ["haxelib.json", "hxformat.json", ".haxerc"]
-detect_folders = [".haxelib", "haxe_libraries"]
+detect_extensions = [
+    "hx",
+    "hxml",
+]
+detect_files = [
+    "haxelib.json",
+    "hxformat.json",
+    ".haxerc",
+]
+detect_folders = [
+    ".haxelib",
+    "haxe_libraries",
+]
 
 [helm]
 format = "via [$symbol($version )]($style)"
@@ -607,7 +662,10 @@ symbol = " "
 style = "bold white"
 disabled = false
 detect_extensions = []
-detect_files = ["helmfile.yaml", "Chart.yaml"]
+detect_files = [
+    "helmfile.yaml",
+    "Chart.yaml",
+]
 detect_folders = []
 
 [hg_branch]
@@ -648,7 +706,14 @@ format = "via [$symbol($version )]($style)"
 version_format = "v${raw}"
 style = "red dimmed"
 symbol = " "
-detect_extensions = ["java", "class", "jar", "gradle", "clj", "cljc"]
+detect_extensions = [
+    "java",
+    "class",
+    "jar",
+    "gradle",
+    "clj",
+    "cljc",
+]
 detect_files = [
     "pom.xml",
     "build.gradle.kts",
@@ -677,7 +742,10 @@ symbol = " "
 style = "bold purple"
 disabled = false
 detect_extensions = ["jl"]
-detect_files = ["Project.toml", "Manifest.toml"]
+detect_files = [
+    "Project.toml",
+    "Manifest.toml",
+]
 detect_folders = []
 
 [kotlin]
@@ -687,7 +755,10 @@ symbol = " "
 style = "bold blue"
 kotlin_binary = "kotlin"
 disabled = false
-detect_extensions = ["kt", "kts"]
+detect_extensions = [
+    "kt",
+    "kts",
+]
 detect_files = []
 detect_folders = []
 
@@ -695,10 +766,10 @@ detect_folders = []
 symbol = "󱃾 "
 format = '[$symbol$context( \($namespace\))]($style) in '
 style = "cyan bold"
-disabled = false
+disabled = true
 detect_extensions = []
-detect_files = ["k8s", "Chart.yaml", "kustomization.yaml"]
-detect_folders = ["k8s", "manifests"]
+detect_files = []
+detect_folders = []
 detect_env_vars = []
 contexts = []
 
@@ -738,11 +809,11 @@ detect_files = ["pom.xml"]
 detect_folders = []
 
 [memory_usage]
-threshold = 0
-format = "$symbol[$ram( | $swap)]($style) "
+threshold = 75
+format = "via $symbol[$ram( | $swap)]($style) "
 style = "white bold dimmed"
 symbol = "󰍛 "
-disabled = false
+disabled = true
 
 [meson]
 truncation_length = 4294967295
@@ -773,7 +844,10 @@ format = "with [$symbol($version )]($style)"
 symbol = "󰈸 "
 style = "bold 208"
 disabled = false
-detect_extensions = ["mojo", "🔥"]
+detect_extensions = [
+    "mojo",
+    "🔥",
+]
 detect_files = []
 detect_folders = []
 
@@ -795,7 +869,11 @@ version_format = "v${raw}"
 symbol = " "
 style = "yellow bold"
 disabled = false
-detect_extensions = ["nim", "nims", "nimble"]
+detect_extensions = [
+    "nim",
+    "nims",
+    "nimble",
+]
 detect_files = ["nim.cfg"]
 detect_folders = []
 
@@ -816,7 +894,14 @@ symbol = " "
 style = "bold green"
 disabled = false
 not_capable_style = "bold red"
-detect_extensions = ["js", "mjs", "cjs", "ts", "mts", "cts"]
+detect_extensions = [
+    "js",
+    "mjs",
+    "cjs",
+    "ts",
+    "mts",
+    "cts",
+]
 detect_files = [
     "package.json",
     ".node-version",
@@ -838,9 +923,24 @@ local_switch_indicator = "*"
 symbol = " "
 style = "bold yellow"
 disabled = false
-detect_extensions = ["opam", "ml", "mli", "re", "rei"]
-detect_files = ["dune", "dune-project", "jbuild", "jbuild-ignore", ".merlin"]
-detect_folders = ["_opam", "esy.lock"]
+detect_extensions = [
+    "opam",
+    "ml",
+    "mli",
+    "re",
+    "rei",
+]
+detect_files = [
+    "dune",
+    "dune-project",
+    "jbuild",
+    "jbuild-ignore",
+    ".merlin",
+]
+detect_folders = [
+    "_opam",
+    "esy.lock",
+]
 
 [odin]
 format = "via [$symbol($version )]($style)"
@@ -871,7 +971,7 @@ disabled = false
 [os]
 format = "[$symbol]($style)"
 style = "bold white"
-disabled = false
+disabled = true
 
 [os.symbols]
 AIX = " "
@@ -947,7 +1047,11 @@ version_format = "v${raw}"
 symbol = " "
 style = "149 bold"
 disabled = false
-detect_extensions = ["pl", "pm", "pod"]
+detect_extensions = [
+    "pl",
+    "pm",
+    "pod",
+]
 detect_files = [
     "Makefile.PL",
     "Build.PL",
@@ -966,7 +1070,10 @@ symbol = " "
 style = "147 bold"
 disabled = false
 detect_extensions = ["php"]
-detect_files = ["composer.json", ".php-version"]
+detect_files = [
+    "composer.json",
+    ".php-version",
+]
 detect_folders = []
 
 [pijul_channel]
@@ -986,7 +1093,10 @@ symbol = "󰏗 "
 style = "yellow bold"
 disabled = false
 detect_extensions = []
-detect_files = ["pixi.toml", "pixi.lock"]
+detect_files = [
+    "pixi.toml",
+    "pixi.lock",
+]
 detect_folders = []
 
 [pulumi]
@@ -1004,19 +1114,30 @@ symbol = " "
 style = "bold white"
 disabled = false
 detect_extensions = ["purs"]
-detect_files = ["spago.dhall", "spago.yaml", "spago.lock"]
+detect_files = [
+    "spago.dhall",
+    "spago.yaml",
+    "spago.lock",
+]
 detect_folders = []
 
 [python]
 pyenv_version_name = false
 pyenv_prefix = "pyenv "
-python_binary = [["python"], ["python3"], ["python2"]]
+python_binary = [
+    ["python"],
+    ["python3"],
+    ["python2"],
+]
 format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 version_format = "v${raw}"
 style = "yellow bold"
 symbol = " "
 disabled = false
-detect_extensions = ["py", "ipynb"]
+detect_extensions = [
+    "py",
+    "ipynb",
+]
 detect_files = [
     "requirements.txt",
     ".python-version",
@@ -1046,7 +1167,13 @@ version_format = "${raw}"
 symbol = "󱖊 "
 style = "149 bold"
 disabled = false
-detect_extensions = ["p6", "pm6", "pod6", "raku", "rakumod"]
+detect_extensions = [
+    "p6",
+    "pm6",
+    "pod6",
+    "raku",
+    "rakumod",
+]
 detect_files = ["META6.json"]
 detect_folders = []
 
@@ -1056,7 +1183,10 @@ version_format = "v${raw}"
 symbol = "󱍼 "
 style = "red bold"
 disabled = false
-detect_extensions = ["red", "reds"]
+detect_extensions = [
+    "red",
+    "reds",
+]
 detect_files = []
 detect_folders = []
 
@@ -1066,7 +1196,13 @@ version_format = "v${raw}"
 style = "blue bold"
 symbol = "󰟔 "
 disabled = false
-detect_extensions = ["R", "Rd", "Rmd", "Rproj", "Rsx"]
+detect_extensions = [
+    "R",
+    "Rd",
+    "Rmd",
+    "Rproj",
+    "Rsx",
+]
 detect_files = ["DESCRIPTION"]
 detect_folders = [".Rproj.user"]
 
@@ -1077,9 +1213,15 @@ symbol = " "
 style = "bold red"
 disabled = false
 detect_extensions = ["rb"]
-detect_files = ["Gemfile", ".ruby-version"]
+detect_files = [
+    "Gemfile",
+    ".ruby-version",
+]
 detect_folders = []
-detect_variables = ["RUBY_VERSION", "RBENV_VERSION"]
+detect_variables = [
+    "RUBY_VERSION",
+    "RBENV_VERSION",
+]
 
 [rust]
 format = "via [$symbol($version )]($style)"
@@ -1097,8 +1239,15 @@ version_format = "v${raw}"
 disabled = false
 style = "red bold"
 symbol = " "
-detect_extensions = ["sbt", "scala"]
-detect_files = [".scalaenv", ".sbtenv", "build.sbt"]
+detect_extensions = [
+    "sbt",
+    "scala",
+]
+detect_files = [
+    ".scalaenv",
+    ".sbtenv",
+    "build.sbt",
+]
 detect_folders = [".metals"]
 
 [shell]
@@ -1115,7 +1264,7 @@ xonsh_indicator = "xsh"
 cmd_indicator = "cmd"
 unknown_indicator = ""
 style = "white bold"
-disabled = false
+disabled = true
 
 [shlvl]
 threshold = 2
@@ -1164,14 +1313,14 @@ recognize_signal_code = true
 pipestatus = false
 pipestatus_separator = "|"
 pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$maybe_int]($style) '
-disabled = false
+disabled = true
 
 [sudo]
 format = "[as $symbol]($style)"
 symbol = " "
 style = "bold blue"
 allow_windows = false
-disabled = false
+disabled = true
 
 [swift]
 format = "via [$symbol($version )]($style)"
@@ -1189,16 +1338,29 @@ version_format = "v${raw}"
 symbol = " "
 style = "bold 105"
 disabled = false
-detect_extensions = ["tf", "tfplan", "tfstate"]
+detect_extensions = [
+    "tf",
+    "tfplan",
+    "tfstate",
+]
 detect_files = []
 detect_folders = [".terraform"]
-commands = [["terraform", "version"], ["tofu", "version"]]
+commands = [
+    [
+    "terraform",
+    "version",
+],
+    [
+    "tofu",
+    "version",
+],
+]
 
 [time]
 format = "at [$time]($style) "
 style = "bold yellow"
 use_12hr = false
-disabled = false
+disabled = true
 utc_time_offset = "local"
 time_range = "-"
 
@@ -1214,10 +1376,10 @@ detect_folders = []
 
 [username]
 detect_env_vars = []
-format = "[$user]($style) "
+format = "[$user]($style) in "
 style_root = "red bold"
 style_user = "yellow bold"
-show_always = true
+show_always = false
 disabled = false
 
 [username.aliases]
@@ -1233,7 +1395,12 @@ detect_files = ["Vagrantfile"]
 detect_folders = []
 
 [vcs]
-order = ["git", "hg", "pijul", "fossil"]
+order = [
+    "git",
+    "hg",
+    "pijul",
+    "fossil",
+]
 disabled = false
 fossil_modules = "$fossil_branch$fossil_metrics"
 git_modules = "$git_branch$git_commit$git_state$git_metrics$git_status"
@@ -1253,7 +1420,11 @@ symbol = " "
 style = "blue bold"
 disabled = false
 detect_extensions = ["v"]
-detect_files = ["v.mod", "vpkg.json", ".vpkg-lock.json"]
+detect_files = [
+    "v.mod",
+    "vpkg.json",
+    ".vpkg-lock.json",
+]
 detect_folders = []
 
 [xmake]
@@ -1275,3 +1446,6 @@ disabled = false
 detect_extensions = ["zig"]
 detect_files = []
 detect_folders = []
+
+[custom]
+

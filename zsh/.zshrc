@@ -34,6 +34,7 @@ alias c="clear"
 alias h="history"
 alias path="echo -e ${PATH//:/\\n}"
 alias ports="lsof -i -P -n | grep LISTEN"
+alias vsx-save="code --list-extensions > ~/dotfiles/vscode/extensions.txt"
 
 # git
 alias s="git status"
@@ -50,25 +51,32 @@ eval "$(zoxide init zsh)"
 # starship
 eval "$(starship init zsh)"
 
+# fastfetch on new terminal
+if [[ -o interactive ]] && [[ -z "$FASTFETCH_SHOWN" ]]; then
+    fastfetch
+    export FASTFETCH_SHOWN=1
+fi
+
 autoload -Uz add-zsh-hook
 add-zsh-hook precmd transient-prompt-precmd
 
 TRANSIENT_PROMPT="${PROMPT// prompt / prompt --profile transient }"
-TRANSIENT_RPROMPT="${PROMPT// prompt / prompt --profile rtransient }"
 
 function transient-prompt-precmd {
     # Fix ctrl+c behavior
-    TRAPINT() { transient-prompt; return $(( 128 + $1 )) }
+    TRAPINT() {
+        zle 2>/dev/null && transient-prompt
+        return $(( 128 + $1 ))
+    }
 
     # Save transient prompt
     SAVED_PROMPT="$(eval "printf '%s' \"${TRANSIENT_PROMPT}\"")"
-    SAVED_RPROMPT="$(eval "printf '%s' \"${TRANSIENT_RPROMPT}\"")"
 }
 
 autoload -Uz add-zle-hook-widget
 add-zle-hook-widget zle-line-finish transient-prompt
 
 function transient-prompt() {
-    # Use saved transient prompt
-    PROMPT="$SAVED_PROMPT" RPROMPT="$SAVED_RPROMPT" zle .reset-prompt
+    # Use saved transient prompt; leave RPROMPT untouched (regular right prompt persists)
+    PROMPT="$SAVED_PROMPT" zle .reset-prompt
 }
