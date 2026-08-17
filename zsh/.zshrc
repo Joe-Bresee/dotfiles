@@ -11,6 +11,23 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 
+# Command-line text styling
+typeset -gA ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[default]='fg=#6c7086,dim'
+ZSH_HIGHLIGHT_STYLES[command]='fg=#a6e3a1,bold'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f38ba8,dim'
+ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=#cba6f7,bold'
+ZSH_HIGHLIGHT_STYLES[alias]='fg=#89b4fa'
+ZSH_HIGHLIGHT_STYLES[builtin]='fg=#89b4fa'
+ZSH_HIGHLIGHT_STYLES[function]='fg=#89b4fa'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#6c7086,dim'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#f9e2af'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#f9e2af'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#f9e2af'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#94e2d5'
+ZSH_HIGHLIGHT_STYLES[redirection]='fg=#fab387'
+ZSH_HIGHLIGHT_STYLES[globbing]='fg=#fab387'
+
 
 # aliases
 
