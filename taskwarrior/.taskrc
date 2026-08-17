@@ -1,0 +1,73 @@
+# [Created by task 3.4.2 8/17/2026 13:16:15]
+data.location=/Users/jkbresee/.task
+news.version=3.4.2
+
+# To use the default location of the XDG directories,
+# move this configuration file from ~/.taskrc to ~/.config/task/taskrc and update location config as follows:
+
+#data.location=~/.local/share/task
+#hooks.location=~/.config/task/hooks
+
+# Color theme (uncomment one to use)
+#include light-16.theme
+#include light-256.theme
+#include bubblegum-256.theme
+#include dark-16.theme
+#include dark-256.theme
+#include dark-red-256.theme
+#include dark-green-256.theme
+#include dark-blue-256.theme
+#include dark-violets-256.theme
+#include dark-yellow-green.theme
+#include dark-gray-256.theme
+#include dark-gray-blue-256.theme
+#include solarized-dark-256.theme
+#include solarized-light-256.theme
+#include no-color.theme
+
+
+# catpuccinmocha
+# General decoration
+color.label=color4
+color.label.sort=color4
+color.alternate=
+color.header=color6
+color.footnote=color3
+color.warning=bold color1
+color.error=white on color1
+color.debug=color4
+
+# Task states
+color.completed=color2
+color.deleted=color1
+color.active=bold color5
+color.blocked=color3
+color.blocking=bold color3
+color.scheduled=color6
+color.overdue=bold color1
+color.due=color3
+color.due.today=bold color3
+color.recurring=color4
+
+# Priority
+color.pri.H=bold color1
+color.pri.M=color3
+color.pri.L=color2
+
+# Tags
+color.tag.next=bold color5
+color.tagged=color6
+
+# UI elements
+color.project.none=color8
+color.summary.background=color8
+color.summary.bar=color4
+color.history.add=color1
+color.history.done=color2
+color.history.delete=color8
+color.burndown.pending=color1
+color.burndown.started=color3
+color.burndown.done=color2
+
+# Sync/report style
+report.next.colorize=1

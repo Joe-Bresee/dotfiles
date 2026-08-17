@@ -1,0 +1,21 @@
+set folder = ~/Mail/icloud
+set spoolfile = +INBOX
+set mbox_type = Maildir
+set sendmail = "/run/current-system/sw/bin/msmtp"
+set from = "jkbresee@icloud.com"
+set realname = "Joe Bresee"
+set use_from = yes
+set envelope_from = yes
+
+# Mailboxes to show in sidebar
+mailboxes +INBOX +Sent +Drafts +Archive
+
+# Editor
+set editor = "nvim"
+
+# Sidebar (nice for navigating folders)
+set sidebar_visible = yes
+set sidebar_width = 25
+bind index,pager \Cp sidebar-prev
+bind index,pager \Cn sidebar-next
+bind index,pager \Co sidebar-open

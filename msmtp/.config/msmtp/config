@@ -1,0 +1,15 @@
+# ~/.config/msmtp/config
+defaults
+auth on
+tls on
+tls_starttls on
+logfile ~/.cache/msmtp.log
+
+account icloud
+host smtp.mail.me.com
+port 587
+from jkbresee@icloud.com
+user jkbresee@icloud.com
+passwordeval "security find-generic-password -a jkbresee@icloud.com -s icloud-mbsync -w"
+
+account default : icloud

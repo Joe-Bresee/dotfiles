@@ -1,0 +1,21 @@
+IMAPAccount icloud
+Host imap.mail.me.com
+User jkbresee@icloud.com
+PassCmd "security find-generic-password -a jkbresee@icloud.com -s icloud-mbsync -w"
+TLSType IMAPS
+
+IMAPStore icloud-remote
+Account icloud
+
+MaildirStore icloud-local
+Path ~/Mail/icloud/
+Inbox ~/Mail/icloud/INBOX
+SubFolders Verbatim
+
+Channel icloud
+Far :icloud-remote:
+Near :icloud-local:
+Patterns * !"Deleted Messages" !"Junk"
+Create Both
+Expunge Both
+SyncState *

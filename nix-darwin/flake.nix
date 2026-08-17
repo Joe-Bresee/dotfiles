@@ -28,6 +28,18 @@
                 pkgs.fastfetch
                 pkgs.python312
                 pkgs.python312Packages.pip
+                pkgs.nicotine-plus
+                pkgs.gh-dash
+                pkgs.k9s
+                pkgs.taskwarrior3
+                pkgs.taskwarrior-tui
+                pkgs.discordo
+                pkgs.neomutt
+                pkgs.yazi
+                pkgs.kew
+                pkgs.isync
+                pkgs.msmtp
+                pkgs.pass
             ];
 
             programs.zsh.enable = true;
@@ -41,9 +53,17 @@
 
             homebrew = {
                 enable = true;
-                onActivation.autoUpdate = true;
-                onActivation.upgrade = true;
-                onActivation.cleanup = "zap";
+                onActivation = {
+                    autoUpdate = true;
+                    upgrade = true;
+                    cleanup = "zap";
+                };
+                taps = [
+                    "anthonymaley/musictui"
+                ];
+                brews = [
+                    "anthonymaley/musictui/musictui"
+                ];
                 casks = [
                     "brave-browser"
                     "obsidian"
