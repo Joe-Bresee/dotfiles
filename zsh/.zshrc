@@ -24,9 +24,11 @@ ZSH_HIGHLIGHT_STYLES[comment]='fg=#6c7086,dim'
 ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=#f9e2af'
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#f9e2af'
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#f9e2af'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#94e2d5'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument]='fg=#f38ba8'
 ZSH_HIGHLIGHT_STYLES[redirection]='fg=#fab387'
 ZSH_HIGHLIGHT_STYLES[globbing]='fg=#fab387'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#94e2d5'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#94e2d5'
 
 
 # aliases
