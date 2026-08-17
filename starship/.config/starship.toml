@@ -1073,9 +1073,9 @@ detect_folders = []
 pyenv_version_name = false
 pyenv_prefix = "pyenv "
 python_binary = [["python"], ["python3"], ["python2"]]
-format = 'via [${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = '[${symbol}${pyenv_prefix}(${version} ).venv(\($virtualenv\) )]($style)'
 version_format = "v${raw}"
-style = "bg:right_bg_primary fg:right_fg_primary bold dimmed"
+style = "bg:right_bg_primary fg:right_fg_primary dimmed"
 symbol = " "
 disabled = false
 detect_extensions = ["py", "ipynb"]
@@ -1231,7 +1231,7 @@ disabled = false
 [sudo]
 format = "[ as $symbol ]($style)"
 symbol = " "
-style = "bg:blue fg:crust bold"
+style = "bg:right_bg_primary fg:red bold"
 allow_windows = false
 disabled = false
 

@@ -21,12 +21,13 @@
                 pkgs.lazygit
                 pkgs.stow
                 pkgs.eza
-                pkgs.tmux
                 pkgs.starship
                 pkgs.fzf
                 pkgs.zoxide
                 pkgs.vscode
                 pkgs.fastfetch
+                pkgs.python312
+                pkgs.python312Packages.pip
             ];
 
             programs.zsh.enable = true;
@@ -41,6 +42,7 @@
             homebrew = {
                 enable = true;
                 onActivation.autoUpdate = true;
+                onActivation.upgrade = true;
                 onActivation.cleanup = "zap";
                 casks = [
                     "brave-browser"

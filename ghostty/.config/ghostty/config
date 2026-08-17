@@ -4,9 +4,39 @@ font-family = "JetBrainsMono Nerd Font"
 background = #1e1e2e
 foreground = #cdd6f4
 
-# background-image=
+# background-image = /Users/jkbresee/.config/ghostty/wallpaper.png
+# background-image-opacity = 2
+# background-image-fit = cover
 
-background-opacity = 0.5
+background-opacity = 0.8
+background-blur = macos-glass-clear 
 
-curson-opacity = 0.75
+cursor-opacity = 0.75
 cursor-style = block_hollow
+cursor-style-blink = false
+cursor-text = #b4befe
+cursor-click-to-move = true
+
+keybind = global:cmd+backquote=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-screen = main
+quick-terminal-animation-duration = 0.2
+quick-terminal-autohide = true
+
+custom-shader = ~/shaders/cursor-trail.glsl
+
+macos-non-native-fullscreen = true
+shell-integration-features = no-title
+resize-overlay = always
+resize-overlay-position = center
+
+window-inherit-working-directory = true
+keybind = ctrl+alt+h=goto_split:left
+keybind = ctrl+alt+j=goto_split:down
+keybind = ctrl+alt+k=goto_split:up
+keybind = ctrl+alt+l=goto_split:right
+
+keybind = ctrl+alt+shift+h=new_split:left
+keybind = ctrl+alt+shift+j=new_split:down
+keybind = ctrl+alt+shift+k=new_split:up
+keybind = ctrl+alt+shift+l=new_split:right
