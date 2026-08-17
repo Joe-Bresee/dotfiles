@@ -8,13 +8,11 @@ $directory\
 $git_branch\
 $git_commit\
 $git_state\
-${custom.git_status_general}\
-$git_status\
 $character\
 [](surface0)\
 """
 
-right_format = "[](fg:right_bg_primary)$localip$shlvl$singularity$kubernetes$nats$vcsh$fossil_branch$fossil_metrics$git_metrics$hg_branch$hg_state$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs$ocaml$odin$opa$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$cmd_duration$line_break$jobs$time$status$container$netns$shell$memory_usage$battery[](fg:right_bg_primary)"
+right_format = "[](fg:right_bg_primary)$git_state$localip$shlvl$singularity$kubernetes$nats$vcsh$fossil_branch$fossil_metrics$git_metrics$hg_branch$hg_state$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs$ocaml$odin$opa$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$cmd_duration$line_break$jobs$time$status$container$netns$shell$memory_usage$battery[](fg:right_bg_primary)"
 
 palette = 'catppuccin_mocha'
 
@@ -571,36 +569,29 @@ style = "bg:bg_primary fg:fg_tertiary bold"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 disabled = false
 
-[custom.git_status_general]
-command = "if git diff --quiet && git diff --cached --quiet && test -z \"$(git ls-files --others --exclude-standard)\"; then exit 0; else printf ''; fi"
-when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1"
-format = "[$output]($style)"
-style = "bg:bg_primary fg:fg_tertiary bold"
-disabled = false
-
 [git_status]
-format = '([\[$stashed$conflicted$ahead_behind\] ]($style))'
+format = '([\[$all_status$ahead_behind\] ]($style))'
 style = "bg:bg_primary fg:fg_tertiary bold"
-stashed = '\$'
-ahead = "⇡"
-behind = "⇣"
+stashed = '📦'
+ahead = "\uEB41"
+behind = "\uEB40"
 up_to_date = ""
 diverged = "⇕"
 conflicted = "="
-deleted = "!"
-renamed = "!"
-modified = "!"
-staged = "!"
-untracked = "!"
-typechanged = "!"
-worktree_added = "!"
-worktree_deleted = "!"
-worktree_modified = "!"
-worktree_typechanged = "!"
-index_added = "!"
-index_deleted = "!"
-index_modified = "!"
-index_typechanged = "!"
+deleted = "*"
+renamed = "*"
+modified = "*"
+staged = "󰜘"
+untracked = "*"
+typechanged = "*"
+worktree_added = "*"
+worktree_deleted = "*"
+worktree_modified = "*"
+worktree_typechanged = "*"
+index_added = "󰜘"
+index_deleted = "󰜘"
+index_modified = "󰜘"
+index_typechanged = "󰜘"
 ignore_submodules = false
 disabled = false
 use_git_executable = false
