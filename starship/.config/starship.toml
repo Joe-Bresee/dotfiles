@@ -1,7 +1,5 @@
 format = """
 [](surface0)\
-$os\
-$username\
 $sudo\
 $hostname\
 $directory\
@@ -355,7 +353,7 @@ fish_style_pwd_dir_length = 0
 use_logical_path = true
 format = "[ $path ]($style)[$read_only]($read_only_style)"
 repo_root_format = "[ $before_root_path ]($before_repo_root_style)[$repo_root]($repo_root_style)[ $path ]($style)[$read_only]($read_only_style) "
-style = "bg:bg_primary fg:fg_tertiary"
+style = "bg:bg_primary fg:fg_secondary"
 disabled = false
 read_only = "🔒"
 read_only_style = "red"
@@ -543,10 +541,10 @@ disabled = false
 commit_hash_length = 7
 format = '[\($hash$tag\) ]($style)'
 style = "bg:bg_primary fg:fg_tertiary bold"
-only_detached = true
+only_detached = false
 disabled = false
 tag_symbol = "  "
-tag_disabled = true
+tag_disabled = false
 tag_max_candidates = 0
 
 [git_metrics]
