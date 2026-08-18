@@ -8,7 +8,7 @@ $git_commit\
 $git_status\
 $git_state\
 $character\
-[](surface0)\
+[](surface0) \
 """
 
 right_format = "[](fg:right_bg_primary)$git_state$localip$shlvl$singularity$kubernetes$nats$vcsh$fossil_branch$fossil_metrics$git_metrics$hg_branch$hg_state$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs$ocaml$odin$opa$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$cmd_duration$line_break$jobs$time$status$container$netns$shell$memory_usage$battery[](fg:right_bg_primary)"
@@ -363,6 +363,7 @@ use_os_path_sep = true
 
 [directory.substitutions]
 "dotfiles" = "\U000F103A"
+"md" = "\ueeab"
 "Downloads" = "\uf409"
 "Music" = "\uf001"
 "Pictures" = "\uf03e"
@@ -518,7 +519,7 @@ format = "[$symbol$branch ]($style)"
 symbol = " "
 style = "bg:right_bg_primary fg:right_fg_primary bold dimmed"
 truncation_length = 9223372036854775807
-truncation_symbol = "…"
+truncation_symbol = "…/"
 disabled = true
 
 [fossil_metrics]
@@ -1231,7 +1232,7 @@ disabled = false
 [sudo]
 format = "[as $symbol ]($style)"
 symbol = " "
-style = "bg:right_bg_primary fg:red bold"
+style = "bg:red dimmed fg:red bold"
 allow_windows = false
 disabled = false
 
