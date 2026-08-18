@@ -100,8 +100,8 @@ autoload -Uz add-zle-hook-widget
 add-zle-hook-widget zle-line-finish transient-prompt
 
 function transient-prompt() {
-    # Use saved transient prompt; leave RPROMPT untouched (regular right prompt persists)
-    PROMPT="$SAVED_PROMPT" zle .reset-prompt
+    # Clear RPROMPT so right prompt only shows on the current (active) line
+    PROMPT="$SAVED_PROMPT" RPROMPT="" zle .reset-prompt
 }
 
 export PATH="$HOME/.local/bin:$PATH"

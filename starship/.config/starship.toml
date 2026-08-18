@@ -1,17 +1,21 @@
 format = """
-[](surface0)\
+[](fg:red)\
 $sudo\
+$username\
 $hostname\
+[](fg:red bg:peach)\
 $directory\
-$git_branch\
-$git_commit\
-$git_status\
-$git_state\
+[](fg:peach bg:yellow)\
+$git_branch$git_commit$git_status$git_state\
+[](fg:yellow bg:green)\
+[](fg:green bg:surface2)\
+[](fg:surface2 bg:surface0)\
+$time\
+[](fg:surface0) \
 $character\
-[](surface0) \
 """
 
-right_format = "[](fg:right_bg_primary)$git_state$localip$shlvl$singularity$kubernetes$nats$vcsh$fossil_branch$fossil_metrics$git_metrics$hg_branch$hg_state$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs$ocaml$odin$opa$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$cmd_duration$line_break$jobs$time$status$container$netns$shell$memory_usage$battery[](fg:right_bg_primary)"
+right_format = "[](fg:right_bg_primary)$localip$shlvl$singularity$kubernetes$nats$vcsh$fossil_branch$fossil_metrics$git_metrics$hg_branch$hg_state$pijul_channel$docker_context$package$bun$c$cmake$cobol$cpp$daml$dart$deno$dotnet$elixir$elm$erlang$fennel$fortran$gleam$golang$gradle$haskell$haxe$helm$java$julia$kotlin$lua$maven$mojo$nim$nodejs$ocaml$odin$opa$php$pulumi$purescript$python$quarto$raku$rlang$red$ruby$rust$scala$solidity$swift$terraform$typst$vlang$vagrant$xmake$zig$buf$guix_shell$nix_shell$conda$pixi$meson$spack$aws$gcloud$openstack$azure$direnv$env_var$mise$crystal$cmd_duration$line_break$jobs$status$container$netns$shell$memory_usage$battery[](fg:right_bg_primary)"
 
 palette = 'catppuccin_mocha'
 
@@ -148,12 +152,12 @@ commands = [["cc", "--version"], ["gcc", "--version"], ["clang", "--version"]]
 
 [character]
 format = "$symbol"
-success_symbol = "[❯](bg:bg_primary fg:fg_primary dimmed)"
-error_symbol = "[❯](bg:bg_primary fg:red dimmed)"
-vimcmd_symbol = "[❯](bg:bg_primary fg:fg_primary)"
-vimcmd_visual_symbol = "[❯](bg:bg_primary fg:yellow)"
-vimcmd_replace_symbol = "[❯](bg:bg_primary fg:yellow)"
-vimcmd_replace_one_symbol = "[❯](bg:bg_primary fg:yellow)"
+success_symbol = '[❯](bold fg:green)'
+error_symbol = '[❯](bold fg:red)'
+vimcmd_symbol = '[❮](bold fg:green)'
+vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
+vimcmd_replace_symbol = '[❮](bold fg:lavender)'
+vimcmd_visual_symbol = '[❮](bold fg:yellow)'
 disabled = false
 
 [custom.character_nobg]
@@ -353,7 +357,7 @@ fish_style_pwd_dir_length = 0
 use_logical_path = true
 format = "[$path ]($style)[$read_only]($read_only_style)"
 repo_root_format = "[ $before_root_path ]($before_repo_root_style)[$repo_root]($repo_root_style)[ $path ]($style)[$read_only]($read_only_style) "
-style = "bg:bg_primary fg:fg_secondary"
+style = "bg:peach fg:crust"
 disabled = false
 read_only = "🔒"
 read_only_style = "red"
@@ -467,8 +471,8 @@ detect_files = []
 detect_folders = []
 
 [fill]
-style = "bold black"
-symbol = "."
+style = "bg:none"
+symbol = " "
 disabled = false
 
 [fortran]
@@ -543,7 +547,7 @@ detect_env_vars = []
 [git_branch]
 format = "[$symbol$branch(:$remote_branch) ]($style)"
 symbol = " "
-style = "bg:bg_primary fg:fg_quaternary bold"
+style = "bg:yellow fg:base bold"
 truncation_length = 9223372036854775807
 truncation_symbol = "…"
 only_attached = false
@@ -555,7 +559,7 @@ disabled = false
 [git_commit]
 commit_hash_length = 7
 format = '[\($hash$tag\) ]($style)'
-style = "bg:bg_primary fg:fg_tertiary bold"
+style = "bg:yellow fg:base bold"
 only_detached = false
 disabled = true
 tag_symbol = "  "
@@ -578,13 +582,13 @@ cherry_pick = "CHERRY-PICKING"
 bisect = "BISECTING"
 am = "AM"
 am_or_rebase = "AM/REBASE"
-style = "bg:bg_primary fg:fg_tertiary bold"
+style = "bg:yellow fg:base bold"
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 disabled = false
 
 [git_status]
 format = '([\[$all_status$ahead_behind\] ]($style))'
-style = "bg:bg_primary fg:red bold "
+style = "bg:yellow fg:base bold"
 conflicted = "="
 ahead = "⇡"
 behind = "⇣"
@@ -593,7 +597,7 @@ up_to_date = ""
 untracked = "?"
 stashed = "$"
 modified = "!"
-staged = '[++($count)]($style)'
+staged = '++($count)'
 renamed = "»"
 deleted = "✘"
 
@@ -700,7 +704,7 @@ ssh_symbol = " "
 trim_at = "."
 detect_env_vars = []
 format = "[$hostname ]($style)"
-style = "bg:bg_primary fg:fg_primary"
+style = "bg:red fg:crust"
 disabled = false
 
 [hostname.aliases]
@@ -1232,7 +1236,7 @@ disabled = false
 [sudo]
 format = "[as $symbol ]($style)"
 symbol = " "
-style = "bg:red dimmed fg:red bold"
+style = "bg:red fg:crust bold"
 allow_windows = false
 disabled = false
 
@@ -1258,10 +1262,11 @@ detect_folders = [".terraform"]
 commands = [["terraform", "version"], ["tofu", "version"]]
 
 [time]
-format = "[$time]($style)"
-style = "bg:right_bg_primary fg:right_fg_primary bold dimmed"
+format = "[ \uf017 $time ]($style)"
+time_format = "%H:%M"
+style = "bg:surface0 fg:subtext1"
 use_12hr = false
-disabled = true
+disabled = false
 utc_time_offset = "local"
 time_range = "-"
 
@@ -1278,8 +1283,8 @@ detect_folders = []
 [username]
 detect_env_vars = []
 format = "[$user]($style)"
-style_root = "bg:red fg:crust bold"
-style_user = "bg:bg_primary fg:fg_primary"
+style_root = "bg:red fg:yellow bold"
+style_user = "bg:red fg:crust bold"
 show_always = true
 disabled = false
 
