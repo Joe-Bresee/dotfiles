@@ -5,6 +5,7 @@ $hostname\
 $directory\
 $git_branch\
 $git_commit\
+$git_status\
 $git_state\
 $character\
 [](surface0)\
@@ -36,7 +37,7 @@ maroon = "#eba0ac"
 peach = "#fab387"
 yellow = "#f9e2af"
 green = "#a6e3a1"
-teal = "#94e2d5"
+teal = "#387a6f"
 sky = "#89dceb"
 sapphire = "#74c7ec"
 blue = "#89b4fa"
@@ -348,18 +349,31 @@ detect_folders = []
 [directory]
 truncation_length = 3
 truncate_to_repo = true
-substitutions = []
 fish_style_pwd_dir_length = 0
 use_logical_path = true
-format = "[ $path ]($style)[$read_only]($read_only_style)"
+format = "[$path ]($style)[$read_only]($read_only_style)"
 repo_root_format = "[ $before_root_path ]($before_repo_root_style)[$repo_root]($repo_root_style)[ $path ]($style)[$read_only]($read_only_style) "
 style = "bg:bg_primary fg:fg_secondary"
 disabled = false
 read_only = "🔒"
 read_only_style = "red"
 truncation_symbol = "…/"
-home_symbol = "~"
+home_symbol = "\U000F0036 "
 use_os_path_sep = true
+
+[directory.substitutions]
+"dotfiles" = "\U000F103A"
+"Downloads" = "\uf409"
+"Music" = "\uf001"
+"Pictures" = "\uf03e"
+"Movies" = "\uf03e"
+"Desktop" = "\uf109 "
+"Documents" = "\U000F0219"
+"Projects" = "\uf121"
+"School" = "\U000F0474"
+"Calibre Library" = "\U000F14F7"
+".ssh" = "\U000F08C0"
+".venvs" = "\ue716"
 
 [direnv]
 format = "[$symbol$loaded/$allowed ]($style)"
@@ -542,17 +556,17 @@ commit_hash_length = 7
 format = '[\($hash$tag\) ]($style)'
 style = "bg:bg_primary fg:fg_tertiary bold"
 only_detached = false
-disabled = false
+disabled = true
 tag_symbol = "  "
 tag_disabled = false
 tag_max_candidates = 0
 
 [git_metrics]
-added_style = "bg:right_bg_primary fg:right_fg_primary bold dimmed"
-deleted_style = "bg:right_bg_primary fg:right_fg_primary bold dimmed"
+added_style = "bg:right_bg_primary fg:green bold dimmed"
+deleted_style = "bg:right_bg_primary fg:red bold dimmed"
 only_nonzero_diffs = true
-format = "([+$added]($added_style) )([-$deleted]($deleted_style) )"
-disabled = true
+format = "([+$added ]($added_style))([-$deleted ]($deleted_style))"
+disabled = false
 ignore_submodules = false
 
 [git_state]
@@ -569,30 +583,18 @@ disabled = false
 
 [git_status]
 format = '([\[$all_status$ahead_behind\] ]($style))'
-style = "bg:bg_primary fg:fg_tertiary bold"
-stashed = '📦'
-ahead = "\uEB41"
-behind = "\uEB40"
-up_to_date = ""
-diverged = "⇕"
+style = "bg:bg_primary fg:red bold "
 conflicted = "="
-deleted = "*"
-renamed = "*"
-modified = "*"
-staged = "󰜘"
-untracked = "*"
-typechanged = "*"
-worktree_added = "*"
-worktree_deleted = "*"
-worktree_modified = "*"
-worktree_typechanged = "*"
-index_added = "󰜘"
-index_deleted = "󰜘"
-index_modified = "󰜘"
-index_typechanged = "󰜘"
-ignore_submodules = false
-disabled = false
-use_git_executable = false
+ahead = "⇡"
+behind = "⇣"
+diverged = "⇕"
+up_to_date = ""
+untracked = "?"
+stashed = "$"
+modified = "!"
+staged = '[++($count)]($style)'
+renamed = "»"
+deleted = "✘"
 
 [gleam]
 format = "[$symbol($version )]($style)"
@@ -800,7 +802,7 @@ detect_folders = []
 [memory_usage]
 threshold = 0
 format = "[ $symbol $ram ]($style)"
-style = "bg:right_bg_primary fg:right_fg_primary dimmed"
+style = "bg:right_bg_primary fg:teal"
 symbol = "󰍛"
 disabled = false
 
@@ -1227,7 +1229,7 @@ pipestatus_format = '\[$pipestatus\] => [$symbol$common_meaning$signal_name$mayb
 disabled = false
 
 [sudo]
-format = "[ as $symbol ]($style)"
+format = "[as $symbol ]($style)"
 symbol = " "
 style = "bg:right_bg_primary fg:red bold"
 allow_windows = false
