@@ -42,6 +42,7 @@
                 pkgs.pass
                 pkgs.w3m
                 pkgs.chafa
+		pkgs.f3
             ];
 
             programs.zsh.enable = true;
