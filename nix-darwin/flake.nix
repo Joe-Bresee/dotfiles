@@ -15,7 +15,8 @@
             fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
-                pkgs.git
+                pkgs.ffmpeg
+		pkgs.git
                 pkgs.yt-dlp
                 pkgs.btop
                 pkgs.lazygit
@@ -43,6 +44,9 @@
                 pkgs.w3m
                 pkgs.chafa
 		pkgs.f3
+		pkgs.nmap
+		pkgs.platformio-core
+		pkgs.moon-buggy
             ];
 
             programs.zsh.enable = true;
@@ -79,6 +83,8 @@
                     "github"
                     "calibre"
                     "discord"
+		    "raspberry-pi-imager"
+		    "garmin-express"
                 ];
             };
         };
