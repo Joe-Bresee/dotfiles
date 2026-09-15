@@ -15,6 +15,8 @@
             fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
+		pkgs.oxipng
+		pkgs.bwbasic
                 pkgs.ffmpeg
 		pkgs.git
                 pkgs.yt-dlp

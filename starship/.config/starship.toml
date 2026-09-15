@@ -7,8 +7,7 @@ $hostname\
 $directory\
 [](fg:peach bg:yellow)\
 $git_branch$git_commit$git_status$git_state\
-[](fg:yellow bg:green)\
-[](fg:green bg:surface2)\
+[](fg:yellow bg:surface2)\
 [](fg:surface2 bg:surface0)\
 $time\
 [](fg:surface0) \
@@ -360,9 +359,9 @@ repo_root_format = "[ $before_root_path ]($before_repo_root_style)[$repo_root]($
 style = "bg:peach fg:crust"
 disabled = false
 read_only = "🔒"
-read_only_style = "red"
+read_only_style = "bg:peach"
 truncation_symbol = "…/"
-home_symbol = "\U000F0036 "
+home_symbol = " \U000F0036 "
 use_os_path_sep = true
 
 [directory.substitutions]
@@ -374,7 +373,7 @@ use_os_path_sep = true
 "Movies" = "\uf03e"
 "Desktop" = "\uf109 "
 "Documents" = "\U000F0219"
-"Projects" = "\uf121"
+"Projects" = " \uf121 "
 "School" = "\U000F0474"
 "Calibre Library" = "\U000F14F7"
 ".ssh" = "\U000F08C0"
