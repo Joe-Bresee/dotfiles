@@ -9,16 +9,45 @@
 
     outputs = inputs@{ self, nixpkgs, nix-darwin, ... }:
     let
-        configuration = { pkgs, ... }: {
+        configuration = { pkgs, ... }:
+        let
+            threat-dragon = pkgs.stdenv.mkDerivation rec {
+                pname = "threat-dragon";
+                version = "2.6.2";
 
+                __noChroot = true;
+
+                src = pkgs.fetchurl {
+                    url = "https://github.com/OWASP/threat-dragon/releases/download/v${version}/Threat-Dragon-ng-${version}-arm64.dmg";
+                    sha256 = "sha256-Q8LYVkdBvxHk6Mx7dAACOoCFqvWDLH6cQ4tdZE1zLQs=";
+                };
+
+                unpackPhase = ''
+                    mkdir -p mnt
+                    /usr/bin/hdiutil attach -nobrowse -mountpoint mnt "$src"
+                    cp -r mnt/*.app .
+                    /usr/bin/hdiutil detach mnt
+                '';
+
+                installPhase = ''
+                    mkdir -p $out/Applications
+                    cp -r *.app "$out/Applications/"
+                '';
+            };
+        in
+        {
             nixpkgs.config.allowUnfree = true;
             fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
-		pkgs.oxipng
-		pkgs.bwbasic
+		pkgs.utm
+		pkgs.neovim
+		pkgs.nodejs_22
+                pkgs.opencode
+                pkgs.oxipng
+                pkgs.bwbasic
                 pkgs.ffmpeg
-		pkgs.git
+                pkgs.git
                 pkgs.yt-dlp
                 pkgs.btop
                 pkgs.lazygit
@@ -45,11 +74,19 @@
                 pkgs.pass
                 pkgs.w3m
                 pkgs.chafa
-		pkgs.f3
-		pkgs.nmap
-		pkgs.platformio-core
-		pkgs.moon-buggy
+                pkgs.f3
+                pkgs.nmap
+                pkgs.platformio-core
+                pkgs.moon-buggy
+
+                threat-dragon
             ];
+
+            system.activationScripts.applications.text = ''
+                mkdir -p "/Applications/Nix Apps"
+                rm -f "/Applications/Nix Apps/Threat Dragon.app"
+                ln -sf "${threat-dragon}/Applications/Threat Dragon.app" "/Applications/Nix Apps/Threat Dragon.app"
+            '';
 
             programs.zsh.enable = true;
             security.pam.services.sudo_local.touchIdAuth = true;
@@ -74,6 +111,7 @@
                     "anthonymaley/musictui/musictui"
                 ];
                 casks = [
+		    "drawio"
                     "brave-browser"
                     "obsidian"
                     "nikitabobko/tap/aerospace"
@@ -85,8 +123,9 @@
                     "github"
                     "calibre"
                     "discord"
-		    "raspberry-pi-imager"
-		    "garmin-express"
+                    "raspberry-pi-imager"
+                    "garmin-express"
+		    "orcaslicer"
                 ];
             };
         };
