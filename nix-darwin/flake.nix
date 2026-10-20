@@ -11,15 +11,15 @@
     let
         configuration = { pkgs, ... }:
         let
-            threat-dragon = pkgs.stdenv.mkDerivation rec {
-                pname = "threat-dragon";
-                version = "2.6.2";
+            mkCraft = { name, version, hash }: pkgs.stdenv.mkDerivation {
+                pname = name;
+                inherit version;
 
                 __noChroot = true;
 
                 src = pkgs.fetchurl {
-                    url = "https://github.com/OWASP/threat-dragon/releases/download/v${version}/Threat-Dragon-ng-${version}-arm64.dmg";
-                    sha256 = "sha256-Q8LYVkdBvxHk6Mx7dAACOoCFqvWDLH6cQ4tdZE1zLQs=";
+                    url = "https://github.com/storytold/${name}/releases/download/v${version}/${name}-${version}-macos-universal.dmg";
+                    inherit hash;
                 };
 
                 unpackPhase = ''
@@ -34,6 +34,17 @@
                     cp -r *.app "$out/Applications/"
                 '';
             };
+
+            craftApps = [
+                (mkCraft { name = "photocraft";  version = "0.11.1"; hash = "sha256-kRTL9a2i+fqRtFZtBTJXkky9UOR3sgfqP99xiKTs+9M="; })
+                (mkCraft { name = "vectorcraft"; version = "0.13.1"; hash = "sha256-uTLDiSegB/MCGMTtQEpcSKP0FnTW5MVgpmLH/9vbcG8="; })
+                (mkCraft { name = "filmcraft";   version = "0.9.0";  hash = "sha256-1lSiO70DlWGmm8VTAgN2kEDKSWHiKCRau4Q3UlJtISQ="; })
+                (mkCraft { name = "lightcraft";  version = "0.9.1";  hash = "sha256-Xj/ed1XQ/Q+pERT8WO9RCTqBthd9zZrs4BQrTsEOHFo="; })
+                (mkCraft { name = "pdfcraft";    version = "0.9.0";  hash = "sha256-EWc4BFpoRj6xpGXm6u8iZpAqrGmqGhXkocFHLDHYq+k="; })
+                (mkCraft { name = "soundcraft";  version = "0.10.0"; hash = "sha256-U7Q012KwpNU541Qo60g4sD/RI+M7+5Pdbd/fsnSJ5Pg="; })
+                # effectcraft and designcraft: check their releases page for the
+                # version, then add them the same way.
+            ];
         in
         {
             nixpkgs.config.allowUnfree = true;
@@ -78,14 +89,16 @@
                 pkgs.nmap
                 pkgs.platformio-core
                 pkgs.moon-buggy
-
-                threat-dragon
-            ];
+		pkgs.tree
+            ] ++ craftApps;
 
             system.activationScripts.applications.text = ''
                 mkdir -p "/Applications/Nix Apps"
-                rm -f "/Applications/Nix Apps/Threat Dragon.app"
-                ln -sf "${threat-dragon}/Applications/Threat Dragon.app" "/Applications/Nix Apps/Threat Dragon.app"
+                ${pkgs.lib.concatMapStrings (pkg: ''
+                    for app in "${pkg}"/Applications/*.app; do
+                        ln -sfn "$app" "/Applications/Nix Apps/$(basename "$app")"
+                    done
+                '') craftApps}
             '';
 
             programs.zsh.enable = true;
@@ -106,20 +119,20 @@
                 };
                 taps = [
                     "anthonymaley/musictui"
+		    "Sikarugir-App/sikarugir"
                 ];
                 brews = [
                     "anthonymaley/musictui/musictui"
                 ];
                 casks = [
+		    "Sikarugir-App/sikarugir/sikarugir"
+		    "the-unarchiver"
 		    "drawio"
                     "brave-browser"
                     "obsidian"
                     "nikitabobko/tap/aerospace"
                     "ghostty"
                     "raycast"
-                    "jordanbaird-ice"
-                    "aldente"
-                    "orbstack"
                     "github"
                     "calibre"
                     "discord"
