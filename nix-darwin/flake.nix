@@ -51,6 +51,7 @@
             fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
+		pkgs.antigravity
 		pkgs.utm
 		pkgs.neovim
 		pkgs.nodejs_22
@@ -123,6 +124,7 @@
                 ];
                 brews = [
                     "anthonymaley/musictui/musictui"
+		    "thefuck"
                 ];
                 casks = [
 		    "Sikarugir-App/sikarugir/sikarugir"
