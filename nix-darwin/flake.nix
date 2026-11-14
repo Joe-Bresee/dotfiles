@@ -51,7 +51,7 @@
             fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
-		pkgs.antigravity
+		pkgs.antigravity-ide
 		pkgs.utm
 		pkgs.neovim
 		pkgs.nodejs_22
