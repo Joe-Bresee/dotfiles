@@ -127,6 +127,7 @@
 		    "thefuck"
                 ];
                 casks = [
+		    "github-copilot-app"
 		    "Sikarugir-App/sikarugir/sikarugir"
 		    "the-unarchiver"
 		    "drawio"
