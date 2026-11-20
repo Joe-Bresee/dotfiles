@@ -51,6 +51,7 @@
             fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
             environment.systemPackages = [
+		pkgs.pandoc
 		pkgs.antigravity-ide
 		pkgs.utm
 		pkgs.neovim
