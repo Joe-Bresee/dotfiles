@@ -68,6 +68,8 @@
                 pkgs.eza
                 pkgs.starship
                 pkgs.fzf
+                pkgs.ripgrep
+                pkgs.fd
                 pkgs.zoxide
                 pkgs.vscode
                 pkgs.fastfetch
@@ -129,6 +131,7 @@
                 ];
                 casks = [
 		    "github-copilot-app"
+		    "antigravity-cli"
 		    "Sikarugir-App/sikarugir/sikarugir"
 		    "the-unarchiver"
 		    "drawio"

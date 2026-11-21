@@ -41,6 +41,7 @@ ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#94e2d5'
 alias renix="sudo darwin-rebuild switch --flake ~/dotfiles/nix-darwin#Joes-MacBook-Pro"
 alias zshrc="code ~/dotfiles/zsh/.zshrc"
 alias shsrc="source ~/.zshrc"
+alias nvimrc="nvim ~/dotfiles/nvim/.config/nvim"
 
 # nav
 alias ..="cd .."
